@@ -1,6 +1,6 @@
 {
   "name": "xz-transform",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "vue-i18n 批量转换文件",
   "main": "lib/main.js",
   "scripts": {
