@@ -1,6 +1,6 @@
 {
-  "name": "vue-i18n-transform",
-  "version": "0.0.6",
+  "name": "xz-transform",
+  "version": "0.0.1",
   "description": "vue-i18n 批量转换文件",
   "main": "lib/main.js",
   "scripts": {
@@ -33,20 +33,13 @@
     "ts-node": "^10.7.0",
     "typescript": "^4.9.5"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zxpsuper/vue-i18n-transform.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zxpsuper/vue-i18n-transform/issues"
-  },
   "keywords": [
     "vue-i18n 批量转换文件",
     "vue-i18n-change",
     "vue-i18n ",
     "vue-i18n-transform"
   ],
-  "homepage": "https://github.com/zxpsuper/vue-i18n-transform#readme"
+  "homepage": "https://github.com/yaolinhong"
 }
