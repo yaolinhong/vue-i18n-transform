@@ -1,5 +1,4 @@
-const fs = require('fs');
-const path = require('path');
+const transform = require('./lib/core/transform');
 const VueI18nInstance = require('./lib/i18nFile').VueI18nInstance;
 
 // 初始化VueI18nInstance
@@ -10,15 +9,14 @@ VueI18nInstance.mergeConfig({
   outdir: 'src/locales',
   exclude: ['src/locales'],
   extensions: ['.js', '.vue', '.ts'],
-  useChineseKey: true,
-  projectDirname: __dirname
+  useChineseKey: false
 });
 
-// 创建测试文件路径
-const testFilePath = path.resolve(__dirname, 'test_nested.vue');
+// 清空现有消息
+VueI18nInstance.resetMessage();
 
-// 标准的测试文件内容
-const testContent = `<template>
+// 测试用例 - 专门测试嵌套$lang问题
+const template = `<template>
   <div>
     <div :title="title"></div>
     <div :content="content"></div>
@@ -37,20 +35,10 @@ export default {
 }
 </script>`;
 
-// 将测试内容写入测试文件
-fs.writeFileSync(testFilePath, testContent, 'utf8');
-
-// 模拟msg对象
-const msg = {
-  warn: console.warn,
-  info: console.info
-};
-
-// 提取模板部分
-const match = testContent.match(/<template(.|\n|\r)*template>/gim)[0];
-
-// 使用replaceVueTemplate处理
-const result = require('./lib/core/replaceVueTemplate').default(match, testFilePath, VueI18nInstance, msg);
+// 执行转换
+const result = transform.replaceVueScript(template, 'test_nested.vue', VueI18nInstance, {
+  warn: console.warn
+});
 
 // 输出结果
 console.log('==== 转换结果 ====');
