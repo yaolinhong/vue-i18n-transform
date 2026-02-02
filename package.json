@@ -12,7 +12,7 @@
     "lib": "lib"
   },
   "bin": {
-    "vue-i18n-transform": "lib/index.js"
+    "xz-trans": "lib/index.js"
   },
   "jest": {
     "transform": {
